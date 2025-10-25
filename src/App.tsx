@@ -11,7 +11,7 @@ function App() {
         <Route path="product/add" element={<Add></Add>}></Route>
         </Route>
       </Routes>
-      <Home></Home>
+      
     </>
   );
 }

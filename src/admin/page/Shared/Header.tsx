@@ -43,7 +43,7 @@ export default function Header() {
             animate="visible"
             exit="exit"
             variants={variants}
-            className="shadow-sm p-2 text-[13px] z-30 top-full right-0 absolute w-full rounded-[3px]"
+            className="shadow-sm p-2 text-[13px] z-30 top-full right-0 absolute w-full rounded-[3px] bg-white"
             aria-label="Menu di động"
           >
            <ul className=" ">
