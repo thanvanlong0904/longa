@@ -5,8 +5,14 @@
   src: url(../src/assets/fonts/RobotoCondensed-Regular.ttf);
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url(../src/assets/fonts/Poppins-Regular.ttf);
+}
+
 @theme {
   --font-roboto: 'Roboto', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
 };
 
 body {

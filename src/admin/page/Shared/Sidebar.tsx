@@ -1,0 +1,90 @@
+import { useState } from "react";
+import { MdAssignment } from "react-icons/md";
+import { CiShop } from "react-icons/ci";
+import ButtonSidebar from "../../components/ButtonSidebar";
+
+export default function Sidebar() {
+  type MenuGroup = "posts" | "pages" | "product" | null;
+  const [openGroup, setOpenGroup] = useState<MenuGroup>(null);
+
+  const toggleGroup = (group: MenuGroup) => {
+    setOpenGroup((prev) => (prev === group ? null : group));
+  };
+
+  return (
+    <div className="px-6 py-4 font-poppins bg-slate-800 min-h-screen text-slate-100">
+      <h1 className="text-center text-white font-medium text-2xl mb-4">Lweb</h1>
+
+      <ul className="space-y-2">
+        <ButtonSidebar
+          groupKey="posts"
+label="Bài viết"
+icon={<MdAssignment className="text-lg" />}
+isOpen={openGroup === "posts"}
+onToggle={() => toggleGroup("posts")}
+panelId="posts-group"
+        >
+          <li>
+            <a
+              href="#"
+              className="block text-slate-300 hover:text-white hover:bg-slate-700 rounded-md px-3 py-1 text-[13px]"
+            >
+              Tất cả trang
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block text-white bg-slate-700 rounded-md px-3 py-1 text-[13px] font-medium"
+            >
+              Thêm trang
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block text-slate-300 hover:text-white hover:bg-slate-700 rounded-md px-3 py-1 text-[13px]"
+            >
+              Mẫu trang
+            </a>
+          </li>
+        </ButtonSidebar>
+
+        {/* Nhóm: Sản phẩm */}
+        <ButtonSidebar
+          groupKey="product"
+          label="Sản phẩm"
+          icon={<CiShop className="text-lg" />}
+          isOpen={openGroup === "product"}
+          onToggle={() => toggleGroup("product")}
+          panelId="product-group"
+        >
+          <li>
+            <a
+              href="#"
+              className="block text-slate-300 hover:text-white hover:bg-slate-700 rounded-md px-3 py-1 text-[13px]"
+            >
+              Tất cả trang
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block text-white bg-slate-700 rounded-md px-3 py-1 text-[13px] font-medium"
+            >
+              Thêm trang
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block text-slate-300 hover:text-white hover:bg-slate-700 rounded-md px-3 py-1 text-[13px]"
+            >
+              Mẫu trang
+            </a>
+          </li>
+        </ButtonSidebar>
+      </ul>
+    </div>
+  );
+}
