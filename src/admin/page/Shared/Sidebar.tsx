@@ -71,10 +71,10 @@ export default function Sidebar() {
           </li>
           <li>
             <Link
-              to="/products/add"
+              to="/admin"
               className="block text-white hover:bg-slate-700 rounded-md px-3 py-1 text-[13px] font-medium"
             >
-              Thêm trang
+              Danh sách sản phẩm
             </Link>
           </li>
           <li>

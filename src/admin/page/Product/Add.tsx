@@ -75,7 +75,7 @@ export default function Add() {
       />
 
       <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10 px-6">
-        <div className="max-w-7xl mx-auto bg-white shadow-lg rounded-xl p-8">
+        <div className="max-w-8xl mx-auto bg-white shadow-lg rounded-xl p-8">
           {/* Header */}
           <div className="flex justify-between items-center border-b pb-4 mb-8">
             <h1 className="text-2xl font-semibold text-gray-700 uppercase tracking-wide">
