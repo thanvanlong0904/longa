@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import http from "../../../assets/http.api";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 const schema = Yup.object({
   name: Yup.string().required("Tên sản phẩm không được bỏ trống"),
@@ -25,7 +26,13 @@ const schema = Yup.object({
 
 type FormSchema = Yup.InferType<typeof schema>;
 
-export default function Add() {
+export default function Edit() {
+    const {id} = useParams()
+
+    const {data: itemProduct} = useMutation({
+        mutationFn: ()=> http.get(`/products/${id}`).then(res=>res.data)
+    })
+    console.log(itemProduct)
   const {
     handleSubmit,
     register,
@@ -79,7 +86,7 @@ export default function Add() {
           {/* Header */}
           <div className="flex justify-between items-center border-b pb-4 mb-8">
             <h1 className="text-2xl font-semibold text-gray-700 uppercase tracking-wide">
-              Thêm sản phẩm
+              Sửa sản phẩm
             </h1>
             <ul className="flex text-sm text-gray-500 gap-2">
               <li>Trang chủ</li>
