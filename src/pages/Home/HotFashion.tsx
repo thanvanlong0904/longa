@@ -1,4 +1,5 @@
 export default function HotFashion() {
+  
   return (
     <>
       <div className=" max-w-7xl m-auto mt-7">
@@ -61,7 +62,7 @@ export default function HotFashion() {
               </div>
             </div>
           </div>
-<div
+          <div
             className="group bg-white rounded-md shadow-md border border-gray-200 
              px-3 pt-3 pb-6 transition-all duration-300 
              hover:shadow-xl hover:border-gray-400"

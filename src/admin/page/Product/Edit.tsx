@@ -16,6 +16,12 @@ const schema = Yup.object({
     ).min(0, 'Giá không đươc âm')
     .typeError("Nhập giá phải là số")
     .required("Giá không được bỏ trống"),
+    oldPrice: Yup.number()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? undefined : value
+    ).min(0, 'Giá không đươc âm')
+    .typeError("Nhập giá phải là số")
+    .required("Không được bỏ trống"),
   stock: Yup.number()
     .transform((value, originalValue) =>
       String(originalValue).trim() === "" ? undefined : value
@@ -60,6 +66,7 @@ export default function Edit() {
         name: itemProduct.name ?? "",
         price: itemProduct.price ?? undefined,
         stock: itemProduct.stock ?? undefined,
+        oldPrice: itemProduct.oldPrice ?? undefined,
         description: itemProduct.description ?? "",
       });
     }
@@ -164,6 +171,22 @@ export default function Edit() {
               />
               <p className="text-red-600 text-sm h-5 mt-1">
                 {errors.price?.message || "\u00A0"}
+              </p>
+            </div>
+             <div>
+              <label className="mb-2 block font-medium text-gray-700">
+                Giá cũ
+              </label>
+              <input
+                {...register("oldPrice")}
+                className={`border rounded-lg w-full h-12 px-3 outline-none  transition ${
+                  errors.oldPrice ? "border-red-500" : "border-gray-300 focus:ring-2 focus:ring-blue-500"
+                }`}
+                type="text"
+                placeholder="Nhập giá cũ sản phẩm..."
+              />
+              <p className="text-red-600 text-sm h-5 mt-1">
+                {errors.oldPrice?.message || "\u00A0"}
               </p>
             </div>
 
