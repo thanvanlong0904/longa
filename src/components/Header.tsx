@@ -3,10 +3,12 @@ import { FaPhone, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { LuMenu, LuX } from "react-icons/lu";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import logo from "../assets/img/logo.png";
+import { useCart } from "../store/Cart.store";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
+  const { items } = useCart();
 
   const navItems = [
     "Hàng mới về",
@@ -110,13 +112,62 @@ export default function Header() {
           </div>
 
           {/* Giỏ hàng */}
-          <button
-            className="p-2 bg-gray-200 rounded-sm"
-            aria-label="Giỏ hàng"
-            type="button"
-          >
-            <FaShoppingCart className="text-red-900" />
-          </button>
+          <div className="relative group">
+            {/* Nút giỏ hàng */}
+            <button
+              className="relative p-2 bg-gray-200 rounded-sm"
+              aria-label="Giỏ hàng"
+              type="button"
+            >
+              <FaShoppingCart className="text-red-900 text-xl" />
+
+              {items.length > 0 && (
+                <span
+                  className="absolute -top-1 -right-1 flex items-center justify-center 
+          w-5 h-5 text-xs font-semibold bg-red-600 text-white 
+          rounded-full shadow"
+                >
+                  {items.length}
+                </span>
+              )}
+            </button>
+
+            {/* Danh sách sản phẩm hiển thị khi hover */}
+            <div
+              className="absolute right-0 mt-2 w-82 bg-white border border-gray-200 
+      rounded-lg shadow-lg opacity-0 invisible 
+      group-hover:opacity-100 group-hover:visible 
+      transition-all duration-300 z-50 shadow-2xl"
+            >
+              {items.length > 0 ? (
+                <>
+                  <ul className=" w-full  px-3 py-3">
+                    {items.map((i, index) => (
+                      <li className=" flex justify-between items-center text-gray-400 border-b border-gray-300 py-2">
+                        <img className=" w-8 h-8" src="/img/logo.png" alt="" />{" "}
+                        <h4 className=" text-[15px]">{i.name}</h4>{" "}
+                        <span className=" text-red-600 text-sm">
+                          {i.price.toLocaleString('vi-VN')} đ
+                        </span>
+                      </li>
+                    ))}
+
+                   
+                  </ul>
+                  <div className="text-end px-3 pb-4 ">
+                    <button className="bg-orange-600 text-white px-2 py-1 cursor-pointer rounded-sm">
+                      Xem gio hang
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-md border border-gray-200 text-gray-500">
+                  <div className="text-5xl mb-3 opacity-20">Giỏ hàng</div>
+                  <p className="text-sm font-medium">Chưa có sản phẩm nào</p>
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* Mobile menu */}
           <button

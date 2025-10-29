@@ -8,3 +8,7 @@ export  interface Product{
     oldPrice: number
 }
 
+
+export interface Cart extends Product {
+  qty: number;
+}

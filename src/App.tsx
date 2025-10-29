@@ -6,6 +6,7 @@ import Edit from "./admin/page/Product/Edit";
 
 import Client from "./pages/Client";
 import HomeIndex from "./pages/Home/HomeIndex";
+import ProductDetail from "./pages/Product/ProductDetail";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Client></Client>} >
       <Route index element={<HomeIndex></HomeIndex>} ></Route>
-      <Route index element={<HomeIndex></HomeIndex>} ></Route>
+      <Route path="product/detail/:id" element={<ProductDetail></ProductDetail>} ></Route>
       </Route>
     </Routes>
       <Routes>
